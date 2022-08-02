@@ -1,17 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'multimedia_item.dart';
+part of 'headline.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MultimediaItem _$$_MultimediaItemFromJson(Map<String, dynamic> json) =>
-    _$_MultimediaItem(
-      url: json['url'] as String,
+_$_Headline _$$_HeadlineFromJson(Map<String, dynamic> json) => _$_Headline(
+      main: json['main'] as String,
     );
 
-Map<String, dynamic> _$$_MultimediaItemToJson(_$_MultimediaItem instance) =>
+Map<String, dynamic> _$$_HeadlineToJson(_$_Headline instance) =>
     <String, dynamic>{
-      'url': instance.url,
+      'main': instance.main,
     };

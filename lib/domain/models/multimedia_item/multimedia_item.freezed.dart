@@ -21,8 +21,6 @@ MultimediaItem _$MultimediaItemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MultimediaItem {
   String get url => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
-  int get width => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +33,7 @@ abstract class $MultimediaItemCopyWith<$Res> {
   factory $MultimediaItemCopyWith(
           MultimediaItem value, $Res Function(MultimediaItem) then) =
       _$MultimediaItemCopyWithImpl<$Res>;
-  $Res call({String url, int height, int width});
+  $Res call({String url});
 }
 
 /// @nodoc
@@ -50,22 +48,12 @@ class _$MultimediaItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = freezed,
-    Object? height = freezed,
-    Object? width = freezed,
   }) {
     return _then(_value.copyWith(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      height: height == freezed
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      width: width == freezed
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -77,7 +65,7 @@ abstract class _$$_MultimediaItemCopyWith<$Res>
           _$_MultimediaItem value, $Res Function(_$_MultimediaItem) then) =
       __$$_MultimediaItemCopyWithImpl<$Res>;
   @override
-  $Res call({String url, int height, int width});
+  $Res call({String url});
 }
 
 /// @nodoc
@@ -94,45 +82,30 @@ class __$$_MultimediaItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = freezed,
-    Object? height = freezed,
-    Object? width = freezed,
   }) {
     return _then(_$_MultimediaItem(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      height: height == freezed
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      width: width == freezed
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MultimediaItem implements _MultimediaItem {
-  _$_MultimediaItem(
-      {required this.url, required this.height, required this.width});
+class _$_MultimediaItem extends _MultimediaItem {
+  _$_MultimediaItem({required this.url}) : super._();
 
   factory _$_MultimediaItem.fromJson(Map<String, dynamic> json) =>
       _$$_MultimediaItemFromJson(json);
 
   @override
   final String url;
-  @override
-  final int height;
-  @override
-  final int width;
 
   @override
   String toString() {
-    return 'MultimediaItem(url: $url, height: $height, width: $width)';
+    return 'MultimediaItem(url: $url)';
   }
 
   @override
@@ -140,18 +113,13 @@ class _$_MultimediaItem implements _MultimediaItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MultimediaItem &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.width, width));
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(width));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
@@ -166,21 +134,15 @@ class _$_MultimediaItem implements _MultimediaItem {
   }
 }
 
-abstract class _MultimediaItem implements MultimediaItem {
-  factory _MultimediaItem(
-      {required final String url,
-      required final int height,
-      required final int width}) = _$_MultimediaItem;
+abstract class _MultimediaItem extends MultimediaItem {
+  factory _MultimediaItem({required final String url}) = _$_MultimediaItem;
+  _MultimediaItem._() : super._();
 
   factory _MultimediaItem.fromJson(Map<String, dynamic> json) =
       _$_MultimediaItem.fromJson;
 
   @override
   String get url;
-  @override
-  int get height;
-  @override
-  int get width;
   @override
   @JsonKey(ignore: true)
   _$$_MultimediaItemCopyWith<_$_MultimediaItem> get copyWith =>

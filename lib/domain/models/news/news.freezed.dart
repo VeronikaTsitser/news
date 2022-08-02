@@ -20,13 +20,16 @@ News _$NewsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$News {
-  String get section => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
+// required String section,
+// required String title,
+  @JsonKey(name: 'web_url')
   String get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'section_name')
+  String get section => throw _privateConstructorUsedError;
+  Headline get headline => throw _privateConstructorUsedError;
   @JsonKey(name: 'abstract')
-  String get descriptions => throw _privateConstructorUsedError;
-  @JsonKey(name: 'published_date')
-  DateTime get publishedDate => throw _privateConstructorUsedError;
+  String get descriptions =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'published_date') required DateTime publishedDate,
   List<MultimediaItem>? get multimedia => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,12 +42,13 @@ abstract class $NewsCopyWith<$Res> {
   factory $NewsCopyWith(News value, $Res Function(News) then) =
       _$NewsCopyWithImpl<$Res>;
   $Res call(
-      {String section,
-      String title,
-      String url,
+      {@JsonKey(name: 'web_url') String url,
+      @JsonKey(name: 'section_name') String section,
+      Headline headline,
       @JsonKey(name: 'abstract') String descriptions,
-      @JsonKey(name: 'published_date') DateTime publishedDate,
       List<MultimediaItem>? multimedia});
+
+  $HeadlineCopyWith<$Res> get headline;
 }
 
 /// @nodoc
@@ -57,39 +61,41 @@ class _$NewsCopyWithImpl<$Res> implements $NewsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? section = freezed,
-    Object? title = freezed,
     Object? url = freezed,
+    Object? section = freezed,
+    Object? headline = freezed,
     Object? descriptions = freezed,
-    Object? publishedDate = freezed,
     Object? multimedia = freezed,
   }) {
     return _then(_value.copyWith(
-      section: section == freezed
-          ? _value.section
-          : section // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      section: section == freezed
+          ? _value.section
+          : section // ignore: cast_nullable_to_non_nullable
+              as String,
+      headline: headline == freezed
+          ? _value.headline
+          : headline // ignore: cast_nullable_to_non_nullable
+              as Headline,
       descriptions: descriptions == freezed
           ? _value.descriptions
           : descriptions // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedDate: publishedDate == freezed
-          ? _value.publishedDate
-          : publishedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       multimedia: multimedia == freezed
           ? _value.multimedia
           : multimedia // ignore: cast_nullable_to_non_nullable
               as List<MultimediaItem>?,
     ));
+  }
+
+  @override
+  $HeadlineCopyWith<$Res> get headline {
+    return $HeadlineCopyWith<$Res>(_value.headline, (value) {
+      return _then(_value.copyWith(headline: value));
+    });
   }
 }
 
@@ -99,12 +105,14 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       __$$_NewsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String section,
-      String title,
-      String url,
+      {@JsonKey(name: 'web_url') String url,
+      @JsonKey(name: 'section_name') String section,
+      Headline headline,
       @JsonKey(name: 'abstract') String descriptions,
-      @JsonKey(name: 'published_date') DateTime publishedDate,
       List<MultimediaItem>? multimedia});
+
+  @override
+  $HeadlineCopyWith<$Res> get headline;
 }
 
 /// @nodoc
@@ -118,34 +126,29 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? section = freezed,
-    Object? title = freezed,
     Object? url = freezed,
+    Object? section = freezed,
+    Object? headline = freezed,
     Object? descriptions = freezed,
-    Object? publishedDate = freezed,
     Object? multimedia = freezed,
   }) {
     return _then(_$_News(
-      section: section == freezed
-          ? _value.section
-          : section // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      section: section == freezed
+          ? _value.section
+          : section // ignore: cast_nullable_to_non_nullable
+              as String,
+      headline: headline == freezed
+          ? _value.headline
+          : headline // ignore: cast_nullable_to_non_nullable
+              as Headline,
       descriptions: descriptions == freezed
           ? _value.descriptions
           : descriptions // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedDate: publishedDate == freezed
-          ? _value.publishedDate
-          : publishedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       multimedia: multimedia == freezed
           ? _value._multimedia
           : multimedia // ignore: cast_nullable_to_non_nullable
@@ -158,29 +161,31 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_News implements _News {
   _$_News(
-      {required this.section,
-      required this.title,
-      required this.url,
+      {@JsonKey(name: 'web_url') required this.url,
+      @JsonKey(name: 'section_name') required this.section,
+      required this.headline,
       @JsonKey(name: 'abstract') required this.descriptions,
-      @JsonKey(name: 'published_date') required this.publishedDate,
       final List<MultimediaItem>? multimedia})
       : _multimedia = multimedia;
 
   factory _$_News.fromJson(Map<String, dynamic> json) => _$$_NewsFromJson(json);
 
+// required String section,
+// required String title,
   @override
+  @JsonKey(name: 'web_url')
+  final String url;
+  @override
+  @JsonKey(name: 'section_name')
   final String section;
   @override
-  final String title;
-  @override
-  final String url;
+  final Headline headline;
   @override
   @JsonKey(name: 'abstract')
   final String descriptions;
-  @override
-  @JsonKey(name: 'published_date')
-  final DateTime publishedDate;
+// @JsonKey(name: 'published_date') required DateTime publishedDate,
   final List<MultimediaItem>? _multimedia;
+// @JsonKey(name: 'published_date') required DateTime publishedDate,
   @override
   List<MultimediaItem>? get multimedia {
     final value = _multimedia;
@@ -191,7 +196,7 @@ class _$_News implements _News {
 
   @override
   String toString() {
-    return 'News(section: $section, title: $title, url: $url, descriptions: $descriptions, publishedDate: $publishedDate, multimedia: $multimedia)';
+    return 'News(url: $url, section: $section, headline: $headline, descriptions: $descriptions, multimedia: $multimedia)';
   }
 
   @override
@@ -199,13 +204,11 @@ class _$_News implements _News {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_News &&
-            const DeepCollectionEquality().equals(other.section, section) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.section, section) &&
+            const DeepCollectionEquality().equals(other.headline, headline) &&
             const DeepCollectionEquality()
                 .equals(other.descriptions, descriptions) &&
-            const DeepCollectionEquality()
-                .equals(other.publishedDate, publishedDate) &&
             const DeepCollectionEquality()
                 .equals(other._multimedia, _multimedia));
   }
@@ -214,11 +217,10 @@ class _$_News implements _News {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(section),
-      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(section),
+      const DeepCollectionEquality().hash(headline),
       const DeepCollectionEquality().hash(descriptions),
-      const DeepCollectionEquality().hash(publishedDate),
       const DeepCollectionEquality().hash(_multimedia));
 
   @JsonKey(ignore: true)
@@ -236,28 +238,27 @@ class _$_News implements _News {
 
 abstract class _News implements News {
   factory _News(
-      {required final String section,
-      required final String title,
-      required final String url,
+      {@JsonKey(name: 'web_url') required final String url,
+      @JsonKey(name: 'section_name') required final String section,
+      required final Headline headline,
       @JsonKey(name: 'abstract') required final String descriptions,
-      @JsonKey(name: 'published_date') required final DateTime publishedDate,
       final List<MultimediaItem>? multimedia}) = _$_News;
 
   factory _News.fromJson(Map<String, dynamic> json) = _$_News.fromJson;
 
+  @override // required String section,
+// required String title,
+  @JsonKey(name: 'web_url')
+  String get url;
   @override
+  @JsonKey(name: 'section_name')
   String get section;
   @override
-  String get title;
-  @override
-  String get url;
+  Headline get headline;
   @override
   @JsonKey(name: 'abstract')
   String get descriptions;
-  @override
-  @JsonKey(name: 'published_date')
-  DateTime get publishedDate;
-  @override
+  @override // @JsonKey(name: 'published_date') required DateTime publishedDate,
   List<MultimediaItem>? get multimedia;
   @override
   @JsonKey(ignore: true)

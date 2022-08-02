@@ -9,18 +9,18 @@ abstract class IApiService {
 
 class ApiService implements IApiService {
   final _dio =
-      Dio(BaseOptions(baseUrl: 'https://api.nytimes.com/svc/topstories/v2'));
+      Dio(BaseOptions(baseUrl: 'https://api.nytimes.com/svc/search/v2'));
   @override
   Future<List<News>> getNews(body) async {
     try {
       Map<String, dynamic> queryParameters = {
         'api-key': 'Nu2LRz330bI39m0pUSn1XFcdhbTBa8Tv'
       };
-      final response =
-          await _dio.get('/home.json', queryParameters: queryParameters);
+      final response = await _dio.get('/articlesearch.json',
+          queryParameters: queryParameters);
       var json = response.data;
       var pageModel = PageModel.fromJson(json);
-      return pageModel.results;
+      return pageModel.response.docs;
     } catch (e) {
       rethrow;
     }

@@ -20,14 +20,10 @@ PageModel _$PageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PageModel {
-  String get status => throw _privateConstructorUsedError;
-  String get copyright => throw _privateConstructorUsedError;
-  String get section => throw _privateConstructorUsedError;
-  List<News> get results => throw _privateConstructorUsedError;
-  @JsonKey(name: 'last_updated')
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(name: 'num_results')
-  int get numResults => throw _privateConstructorUsedError;
+// required String status,
+// required String copyright,
+// required String section,
+  ResponseModel get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,13 +35,9 @@ mixin _$PageModel {
 abstract class $PageModelCopyWith<$Res> {
   factory $PageModelCopyWith(PageModel value, $Res Function(PageModel) then) =
       _$PageModelCopyWithImpl<$Res>;
-  $Res call(
-      {String status,
-      String copyright,
-      String section,
-      List<News> results,
-      @JsonKey(name: 'last_updated') DateTime lastUpdated,
-      @JsonKey(name: 'num_results') int numResults});
+  $Res call({ResponseModel response});
+
+  $ResponseModelCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -58,39 +50,21 @@ class _$PageModelCopyWithImpl<$Res> implements $PageModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? status = freezed,
-    Object? copyright = freezed,
-    Object? section = freezed,
-    Object? results = freezed,
-    Object? lastUpdated = freezed,
-    Object? numResults = freezed,
+    Object? response = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      copyright: copyright == freezed
-          ? _value.copyright
-          : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
-      section: section == freezed
-          ? _value.section
-          : section // ignore: cast_nullable_to_non_nullable
-              as String,
-      results: results == freezed
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<News>,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      numResults: numResults == freezed
-          ? _value.numResults
-          : numResults // ignore: cast_nullable_to_non_nullable
-              as int,
+      response: response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseModel,
     ));
+  }
+
+  @override
+  $ResponseModelCopyWith<$Res> get response {
+    return $ResponseModelCopyWith<$Res>(_value.response, (value) {
+      return _then(_value.copyWith(response: value));
+    });
   }
 }
 
@@ -100,13 +74,10 @@ abstract class _$$_PageModelCopyWith<$Res> implements $PageModelCopyWith<$Res> {
           _$_PageModel value, $Res Function(_$_PageModel) then) =
       __$$_PageModelCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String status,
-      String copyright,
-      String section,
-      List<News> results,
-      @JsonKey(name: 'last_updated') DateTime lastUpdated,
-      @JsonKey(name: 'num_results') int numResults});
+  $Res call({ResponseModel response});
+
+  @override
+  $ResponseModelCopyWith<$Res> get response;
 }
 
 /// @nodoc
@@ -121,38 +92,13 @@ class __$$_PageModelCopyWithImpl<$Res> extends _$PageModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? status = freezed,
-    Object? copyright = freezed,
-    Object? section = freezed,
-    Object? results = freezed,
-    Object? lastUpdated = freezed,
-    Object? numResults = freezed,
+    Object? response = freezed,
   }) {
     return _then(_$_PageModel(
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      copyright: copyright == freezed
-          ? _value.copyright
-          : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
-      section: section == freezed
-          ? _value.section
-          : section // ignore: cast_nullable_to_non_nullable
-              as String,
-      results: results == freezed
-          ? _value._results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<News>,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      numResults: numResults == freezed
-          ? _value.numResults
-          : numResults // ignore: cast_nullable_to_non_nullable
-              as int,
+      response: response == freezed
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as ResponseModel,
     ));
   }
 }
@@ -160,41 +106,20 @@ class __$$_PageModelCopyWithImpl<$Res> extends _$PageModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PageModel implements _PageModel {
-  _$_PageModel(
-      {required this.status,
-      required this.copyright,
-      required this.section,
-      required final List<News> results,
-      @JsonKey(name: 'last_updated') required this.lastUpdated,
-      @JsonKey(name: 'num_results') required this.numResults})
-      : _results = results;
+  _$_PageModel({required this.response});
 
   factory _$_PageModel.fromJson(Map<String, dynamic> json) =>
       _$$_PageModelFromJson(json);
 
+// required String status,
+// required String copyright,
+// required String section,
   @override
-  final String status;
-  @override
-  final String copyright;
-  @override
-  final String section;
-  final List<News> _results;
-  @override
-  List<News> get results {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
-
-  @override
-  @JsonKey(name: 'last_updated')
-  final DateTime lastUpdated;
-  @override
-  @JsonKey(name: 'num_results')
-  final int numResults;
+  final ResponseModel response;
 
   @override
   String toString() {
-    return 'PageModel(status: $status, copyright: $copyright, section: $section, results: $results, lastUpdated: $lastUpdated, numResults: $numResults)';
+    return 'PageModel(response: $response)';
   }
 
   @override
@@ -202,26 +127,13 @@ class _$_PageModel implements _PageModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PageModel &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.copyright, copyright) &&
-            const DeepCollectionEquality().equals(other.section, section) &&
-            const DeepCollectionEquality().equals(other._results, _results) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality()
-                .equals(other.numResults, numResults));
+            const DeepCollectionEquality().equals(other.response, response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(copyright),
-      const DeepCollectionEquality().hash(section),
-      const DeepCollectionEquality().hash(_results),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(numResults));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
 
   @JsonKey(ignore: true)
   @override
@@ -237,32 +149,15 @@ class _$_PageModel implements _PageModel {
 }
 
 abstract class _PageModel implements PageModel {
-  factory _PageModel(
-          {required final String status,
-          required final String copyright,
-          required final String section,
-          required final List<News> results,
-          @JsonKey(name: 'last_updated') required final DateTime lastUpdated,
-          @JsonKey(name: 'num_results') required final int numResults}) =
-      _$_PageModel;
+  factory _PageModel({required final ResponseModel response}) = _$_PageModel;
 
   factory _PageModel.fromJson(Map<String, dynamic> json) =
       _$_PageModel.fromJson;
 
-  @override
-  String get status;
-  @override
-  String get copyright;
-  @override
-  String get section;
-  @override
-  List<News> get results;
-  @override
-  @JsonKey(name: 'last_updated')
-  DateTime get lastUpdated;
-  @override
-  @JsonKey(name: 'num_results')
-  int get numResults;
+  @override // required String status,
+// required String copyright,
+// required String section,
+  ResponseModel get response;
   @override
   @JsonKey(ignore: true)
   _$$_PageModelCopyWith<_$_PageModel> get copyWith =>

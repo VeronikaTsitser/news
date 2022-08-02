@@ -45,12 +45,7 @@ class Application extends StatelessWidget {
           textTheme:
               GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
         ),
-        // home: const NewsListPage(),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const NewsListPage(),
-          '/news_page': (context) => const NewsPage(),
-        },
+        home: const NewsListPage(),
       ),
     );
   }
