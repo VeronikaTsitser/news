@@ -15,11 +15,77 @@ class NewsListBloc extends Bloc<NewsListEvent, NewsListState> {
         await event.map(
           started: (value) async {
             try {
-              print('fgdg');
               var apiService = ApiService();
-              var result = await apiService.getNews(NewsBody());
-              print(result);
-              emit(NewsListState.success(result));
+              var result = await apiService.getNews(const NewsBody());
+
+              emit(NewsListState.success(
+                listNews: result,
+              ));
+            } catch (e) {
+              emit(NewsListState.failure(e.toString()));
+            }
+          },
+          getNewsPage: (value) async {
+            // print('GetNEWS');
+            var currentListNews = value.listNews;
+
+            var currentPage = value.page;
+            var currentSection = value.section;
+            try {
+              var apiService = ApiService();
+              var result = await apiService.getNews(NewsBody(
+                page: currentPage + 1,
+                fq: currentSection,
+              ));
+              print(result.length);
+              List<News> newListNews = currentListNews + result;
+              emit(
+                NewsListState.success(
+                    listNews: newListNews,
+                    page: currentPage + 1,
+                    section: currentSection),
+              );
+            } catch (e) {
+              emit(NewsListState.failure(e.toString()));
+            }
+          },
+          updateNewsPage: (value) async {
+            var currentListNews = value.listNews;
+
+            try {
+              var apiService = ApiService();
+              // print('update news');
+              var result = await apiService
+                  .getNews(NewsBody(fq: value.section, q: value.text));
+
+              if (currentListNews.first != result.first) {
+                emit(
+                  NewsListState.success(
+                      listNews: result,
+                      text: value.text,
+                      section: value.section),
+                );
+              }
+            } catch (e) {
+              emit(NewsListState.failure(e.toString()));
+            }
+          },
+          searchNews: (value) async {
+            String searchLower = value.text.toLowerCase();
+            print('search news');
+            try {
+              var apiService = ApiService();
+              var result = await apiService
+                  .getNews(NewsBody(q: searchLower, fq: value.section));
+
+              emit(
+                NewsListState.success(
+                  listNews: result,
+                  page: 0,
+                  section: value.section,
+                  text: value.text,
+                ),
+              );
             } catch (e) {
               emit(NewsListState.failure(e.toString()));
             }

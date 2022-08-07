@@ -34,9 +34,7 @@ class Application extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) {
         var bloc = NewsListBloc();
-        // bloc.add(
-        //   NewsListEvent.started(),
-        // );
+
         return bloc..add(NewsListEvent.started());
       },
       child: MaterialApp(

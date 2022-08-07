@@ -1,12 +1,20 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class NewsBody {
+  const NewsBody({this.fq, this.page, this.q});
 
-part 'news_body.freezed.dart';
-part 'news_body.g.dart';
-
-@freezed
-class NewsBody with _$NewsBody {
-  factory NewsBody() = _NewsBody;
-
-  factory NewsBody.fromJson(Map<String, dynamic> json) =>
-      _$NewsBodyFromJson(json);
+  final int? page;
+  final String? fq;
+  final String? q;
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> json = {};
+    if (page != null) {
+      json['page'] = page;
+    }
+    if (fq != null) {
+      json['fq'] = '''news_desk:("$fq")''';
+    }
+    if (q != null) {
+      json['q'] = q;
+    }
+    return json;
+  }
 }

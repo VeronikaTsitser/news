@@ -11,10 +11,11 @@ class News with _$News {
     // required String section,
     // required String title,
 
-    @JsonKey(name: 'web_url') required String url,
-    @JsonKey(name: 'section_name') required String section,
+    @JsonKey(name: 'web_url') @Default('') String url,
+    @JsonKey(name: 'section_name') @Default('') String section,
     required Headline headline,
-    @JsonKey(name: 'abstract') required String descriptions,
+    @JsonKey(name: 'abstract') @Default('') String subtitle,
+    @JsonKey(name: 'lead_paragraph') @Default('') String descriptions,
     // @JsonKey(name: 'published_date') required DateTime publishedDate,
     List<MultimediaItem>? multimedia,
   }) = _News;

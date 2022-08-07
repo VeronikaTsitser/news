@@ -28,6 +28,8 @@ mixin _$News {
   String get section => throw _privateConstructorUsedError;
   Headline get headline => throw _privateConstructorUsedError;
   @JsonKey(name: 'abstract')
+  String get subtitle => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lead_paragraph')
   String get descriptions =>
       throw _privateConstructorUsedError; // @JsonKey(name: 'published_date') required DateTime publishedDate,
   List<MultimediaItem>? get multimedia => throw _privateConstructorUsedError;
@@ -45,7 +47,8 @@ abstract class $NewsCopyWith<$Res> {
       {@JsonKey(name: 'web_url') String url,
       @JsonKey(name: 'section_name') String section,
       Headline headline,
-      @JsonKey(name: 'abstract') String descriptions,
+      @JsonKey(name: 'abstract') String subtitle,
+      @JsonKey(name: 'lead_paragraph') String descriptions,
       List<MultimediaItem>? multimedia});
 
   $HeadlineCopyWith<$Res> get headline;
@@ -64,6 +67,7 @@ class _$NewsCopyWithImpl<$Res> implements $NewsCopyWith<$Res> {
     Object? url = freezed,
     Object? section = freezed,
     Object? headline = freezed,
+    Object? subtitle = freezed,
     Object? descriptions = freezed,
     Object? multimedia = freezed,
   }) {
@@ -80,6 +84,10 @@ class _$NewsCopyWithImpl<$Res> implements $NewsCopyWith<$Res> {
           ? _value.headline
           : headline // ignore: cast_nullable_to_non_nullable
               as Headline,
+      subtitle: subtitle == freezed
+          ? _value.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String,
       descriptions: descriptions == freezed
           ? _value.descriptions
           : descriptions // ignore: cast_nullable_to_non_nullable
@@ -108,7 +116,8 @@ abstract class _$$_NewsCopyWith<$Res> implements $NewsCopyWith<$Res> {
       {@JsonKey(name: 'web_url') String url,
       @JsonKey(name: 'section_name') String section,
       Headline headline,
-      @JsonKey(name: 'abstract') String descriptions,
+      @JsonKey(name: 'abstract') String subtitle,
+      @JsonKey(name: 'lead_paragraph') String descriptions,
       List<MultimediaItem>? multimedia});
 
   @override
@@ -129,6 +138,7 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res>
     Object? url = freezed,
     Object? section = freezed,
     Object? headline = freezed,
+    Object? subtitle = freezed,
     Object? descriptions = freezed,
     Object? multimedia = freezed,
   }) {
@@ -145,6 +155,10 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res>
           ? _value.headline
           : headline // ignore: cast_nullable_to_non_nullable
               as Headline,
+      subtitle: subtitle == freezed
+          ? _value.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String,
       descriptions: descriptions == freezed
           ? _value.descriptions
           : descriptions // ignore: cast_nullable_to_non_nullable
@@ -161,10 +175,11 @@ class __$$_NewsCopyWithImpl<$Res> extends _$NewsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_News implements _News {
   _$_News(
-      {@JsonKey(name: 'web_url') required this.url,
-      @JsonKey(name: 'section_name') required this.section,
+      {@JsonKey(name: 'web_url') this.url = '',
+      @JsonKey(name: 'section_name') this.section = '',
       required this.headline,
-      @JsonKey(name: 'abstract') required this.descriptions,
+      @JsonKey(name: 'abstract') this.subtitle = '',
+      @JsonKey(name: 'lead_paragraph') this.descriptions = '',
       final List<MultimediaItem>? multimedia})
       : _multimedia = multimedia;
 
@@ -182,6 +197,9 @@ class _$_News implements _News {
   final Headline headline;
   @override
   @JsonKey(name: 'abstract')
+  final String subtitle;
+  @override
+  @JsonKey(name: 'lead_paragraph')
   final String descriptions;
 // @JsonKey(name: 'published_date') required DateTime publishedDate,
   final List<MultimediaItem>? _multimedia;
@@ -196,7 +214,7 @@ class _$_News implements _News {
 
   @override
   String toString() {
-    return 'News(url: $url, section: $section, headline: $headline, descriptions: $descriptions, multimedia: $multimedia)';
+    return 'News(url: $url, section: $section, headline: $headline, subtitle: $subtitle, descriptions: $descriptions, multimedia: $multimedia)';
   }
 
   @override
@@ -207,6 +225,7 @@ class _$_News implements _News {
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.section, section) &&
             const DeepCollectionEquality().equals(other.headline, headline) &&
+            const DeepCollectionEquality().equals(other.subtitle, subtitle) &&
             const DeepCollectionEquality()
                 .equals(other.descriptions, descriptions) &&
             const DeepCollectionEquality()
@@ -220,6 +239,7 @@ class _$_News implements _News {
       const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(section),
       const DeepCollectionEquality().hash(headline),
+      const DeepCollectionEquality().hash(subtitle),
       const DeepCollectionEquality().hash(descriptions),
       const DeepCollectionEquality().hash(_multimedia));
 
@@ -238,10 +258,11 @@ class _$_News implements _News {
 
 abstract class _News implements News {
   factory _News(
-      {@JsonKey(name: 'web_url') required final String url,
-      @JsonKey(name: 'section_name') required final String section,
+      {@JsonKey(name: 'web_url') final String url,
+      @JsonKey(name: 'section_name') final String section,
       required final Headline headline,
-      @JsonKey(name: 'abstract') required final String descriptions,
+      @JsonKey(name: 'abstract') final String subtitle,
+      @JsonKey(name: 'lead_paragraph') final String descriptions,
       final List<MultimediaItem>? multimedia}) = _$_News;
 
   factory _News.fromJson(Map<String, dynamic> json) = _$_News.fromJson;
@@ -257,6 +278,9 @@ abstract class _News implements News {
   Headline get headline;
   @override
   @JsonKey(name: 'abstract')
+  String get subtitle;
+  @override
+  @JsonKey(name: 'lead_paragraph')
   String get descriptions;
   @override // @JsonKey(name: 'published_date') required DateTime publishedDate,
   List<MultimediaItem>? get multimedia;
